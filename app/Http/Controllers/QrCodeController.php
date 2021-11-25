@@ -24,7 +24,7 @@ class QrCodeController extends Controller
     $oldFile->cleanDirectory(base_path('public\storage\images\\'));
     info($request->file->get('files'));
     $current = $request->file->get('files');
-    $strs = explode(" ", $current);
+    $strs = explode(' ', $current,strlen($current));
     foreach ($strs as $str) {
       \QrCode::size(500)
         ->format('png')

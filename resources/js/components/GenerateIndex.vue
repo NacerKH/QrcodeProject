@@ -8,12 +8,12 @@
             😎
           </div>
 
-          <div class="card-body">
-            <div v-if="success != ''" class="alert alert-success" role="alert">
+          <div class="card-body" >
+            <div v-if="success != ''" class="alert alert-success"  role="alert">
               {{ success }}
             </div>
             <form @submit="formSubmit" enctype="multipart/form-data">
-              <strong>File:</strong> 
+              <strong class="mt-5">File:</strong> 
 
               <input
                 style="display: none"
@@ -21,16 +21,16 @@
                 @change="onFileChange"
                 ref="fileInput"
               />
-              <button @click="$refs.fileInput.click()" class="btn mr-3">
+              <button @click="$refs.fileInput.click()" class="btn ">
                 Pick File
               </button>
 
               <button class="btn btn-success mr-3">Generate</button>
-              <p class="text-info">**You must put file .txt  In file.txt contains List of Strings Separated with space " " </p>
+              <p class="text-danger mt-5">**You must put file .txt  In file.txt contains List of Strings Separated with space " " </p>
             </form>
-           
+            <div v-if="isDisabled"  style="display: flex; justify-content: flex-end"><button   class="btn btn-warning" @click="onDownlod"  >Download Zip🤐</button></div>
             
-            <v-btn  class="btn btn-info mr-5" @click="onDownlod" >Download </v-btn>
+            
           </div>
         </div>
       </div>
@@ -48,6 +48,7 @@ export default {
     return {
      file: "",
       success: "",
+      isDisabled: false
      
     };
   },
@@ -71,15 +72,35 @@ export default {
         .post("http://localhost:8000/api/generate-qrcode", formData, config)
         .then(function (response) {
           currentObj.success = response.data.success;
-              window.location.reload();
+          currentObj.isDisabled =  true;
+       
+          
+           
+              
         })
         .catch(function (error) {
           currentObj.output = error;
         });
     },
      onDownlod() {
-     window.location.href="http://localhost:8000/api/zip"
+       axios({
+    url: 'http://localhost:8000/api/zip',
+    method: 'GET',
+    responseType: 'blob',
+}).then((response) => {
+     var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+     var fileLink = document.createElement('a');
+  
+     fileLink.href = fileURL;
+     fileLink.setAttribute('download', 'AllQRCode.zip');
+     document.body.appendChild(fileLink);
+   
+     fileLink.click();
+});
+     
+     
     },
+
      },
 };
 </script>

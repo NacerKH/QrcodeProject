@@ -19508,7 +19508,8 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       file: "",
-      success: ""
+      success: "",
+      isDisabled: false
     };
   },
   methods: {
@@ -19528,13 +19529,24 @@ __webpack_require__.r(__webpack_exports__);
       formData.append("file", this.file);
       axios__WEBPACK_IMPORTED_MODULE_0___default().post("http://localhost:8000/api/generate-qrcode", formData, config).then(function (response) {
         currentObj.success = response.data.success;
-        window.location.reload();
+        currentObj.isDisabled = true;
       })["catch"](function (error) {
         currentObj.output = error;
       });
     },
     onDownlod: function onDownlod() {
-      window.location.href = "http://localhost:8000/api/zip";
+      axios__WEBPACK_IMPORTED_MODULE_0___default()({
+        url: 'http://localhost:8000/api/zip',
+        method: 'GET',
+        responseType: 'blob'
+      }).then(function (response) {
+        var fileURL = window.URL.createObjectURL(new Blob([response.data]));
+        var fileLink = document.createElement('a');
+        fileLink.href = fileURL;
+        fileLink.setAttribute('download', 'AllQRCode.zip');
+        document.body.appendChild(fileLink);
+        fileLink.click();
+      });
     }
   }
 });
@@ -19582,7 +19594,9 @@ var _hoisted_7 = {
   role: "alert"
 };
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "File:", -1
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", {
+  "class": "mt-5"
+}, "File:", -1
 /* HOISTED */
 );
 
@@ -19593,16 +19607,19 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-  "class": "text-info"
+  "class": "text-danger mt-5"
 }, "**You must put file .txt In file.txt contains List of Strings Separated with space \" \" ", -1
 /* HOISTED */
 );
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Download ");
-
+var _hoisted_11 = {
+  key: 1,
+  style: {
+    "display": "flex",
+    "justify-content": "flex-end"
+  }
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_v_btn = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-btn");
-
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [$data.success != '' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.success), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
@@ -19625,22 +19642,15 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[1] || (_cache[1] = function ($event) {
       return _ctx.$refs.fileInput.click();
     }),
-    "class": "btn mr-3"
+    "class": "btn"
   }, " Pick File "), _hoisted_9, _hoisted_10], 32
   /* HYDRATE_EVENTS */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
-    "class": "btn btn-info mr-5",
-    onClick: $options.onDownlod
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_11];
-    }),
-    _: 1
-    /* STABLE */
-
-  }, 8
-  /* PROPS */
-  , ["onClick"])])])])])]);
+  ), $data.isDisabled ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    "class": "btn btn-warning",
+    onClick: _cache[3] || (_cache[3] = function () {
+      return $options.onDownlod && $options.onDownlod.apply($options, arguments);
+    })
+  }, "Download Zip🤐")])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]);
 }
 
 /***/ }),

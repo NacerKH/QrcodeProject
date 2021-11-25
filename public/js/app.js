@@ -19507,7 +19507,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      disabled: 1,
       file: "",
       success: ""
     };
@@ -19593,15 +19592,13 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 /* HOISTED */
 );
 
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+  "class": "text-info"
+}, "**You must put file .txt In file.txt contains List of Strings Separated with space \" \" ", -1
 /* HOISTED */
 );
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1
-/* HOISTED */
-);
-
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Download ");
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Download ");
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_btn = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-btn");
@@ -19629,22 +19626,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _ctx.$refs.fileInput.click();
     }),
     "class": "btn mr-3"
-  }, " Pick File "), _hoisted_9], 32
+  }, " Pick File "), _hoisted_9, _hoisted_10], 32
   /* HYDRATE_EVENTS */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button @click=\"onDownlod\" class=\"btn btn-info ml-5\">\r\n              DownLoad\r\n            </button> "), _hoisted_10, _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
-    "class": "btn btn-info mr-5 align-right",
-    onClick: $options.onDownlod,
-    disabled: $data.disabled == 1
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
+    "class": "btn btn-info mr-5",
+    onClick: $options.onDownlod
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_12];
+      return [_hoisted_11];
     }),
     _: 1
     /* STABLE */
 
   }, 8
   /* PROPS */
-  , ["onClick", "disabled"])])])])])]);
+  , ["onClick"])])])])])]);
 }
 
 /***/ }),

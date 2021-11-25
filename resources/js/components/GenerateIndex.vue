@@ -26,6 +26,7 @@
               </button>
 
               <button class="btn btn-success mr-3">Generate</button>
+              <p class="text-info">**You must put file .txt  In file.txt contains List of Strings Separated with space " " </p>
             </form>
            
             
@@ -70,7 +71,7 @@ export default {
         .post("http://localhost:8000/api/generate-qrcode", formData, config)
         .then(function (response) {
           currentObj.success = response.data.success;
-          window.location.reload();
+              window.location.reload();
         })
         .catch(function (error) {
           currentObj.output = error;

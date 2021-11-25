@@ -18,5 +18,3 @@ use App\Http\Controllers\zipController;
 Route::get('/', function () {
     return view('welcome');
 });
-//Route::get('/generate-qrcode', [QrCodeController::class, 'generateQrCode']);
-//Route::get('/zip', [zipController::class, 'zipFile']);

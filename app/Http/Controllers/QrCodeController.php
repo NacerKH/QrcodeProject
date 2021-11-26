@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Str;
 
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
@@ -24,7 +25,8 @@ class QrCodeController extends Controller
     $oldFile->cleanDirectory(base_path('public\storage\images\\'));
     info($request->file->get('files'));
     $current = $request->file->get('files');
-    $strs = explode(' ', $current,strlen($current));
+    $slice = Str::beforeLast($current, ' ');
+    $strs = explode(',',$slice);
     foreach ($strs as $str) {
       \QrCode::size(500)
         ->format('png')
@@ -32,7 +34,7 @@ class QrCodeController extends Controller
       };
       $oldzip = new Filesystem;
       $oldzip->cleanDirectory(base_path('public\storage\zipfile\\'));
-      return response()->json(['success' => 'You have successfully upload file and U had each string a QrCode Press Downloand']);
+      return response()->json(['success' => 'You have successfully generate and U had each string a QrCode Press Downloand']);
     
   }
   

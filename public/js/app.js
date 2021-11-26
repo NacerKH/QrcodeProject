@@ -19608,7 +19608,7 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 
 var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-danger mt-5"
-}, "**You must put file .txt In file.txt contains List of Strings Separated with space \" \" ", -1
+}, "**You Must Put file .txt ✔️ In File.txt contains List of Strings Separated with comma \",\" 👈 ", -1
 /* HOISTED */
 );
 
@@ -19643,7 +19643,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return _ctx.$refs.fileInput.click();
     }),
     "class": "btn"
-  }, " Pick File "), _hoisted_9, _hoisted_10], 32
+  }, " Pick File 📁 "), _hoisted_9, _hoisted_10], 32
   /* HYDRATE_EVENTS */
   ), $data.isDisabled ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-warning",

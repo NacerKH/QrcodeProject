@@ -22,11 +22,11 @@
                 ref="fileInput"
               />
               <button @click="$refs.fileInput.click()" class="btn ">
-                Pick File
+                Pick File 📁
               </button>
 
               <button class="btn btn-success mr-3">Generate</button>
-              <p class="text-danger mt-5">**You must put file .txt  In file.txt contains List of Strings Separated with space " " </p>
+              <p class="text-danger mt-5">**You Must Put file .txt ✔️  In File.txt contains List of Strings Separated with comma "," 👈 </p>
             </form>
             <div v-if="isDisabled"  style="display: flex; justify-content: flex-end"><button   class="btn btn-warning" @click="onDownlod"  >Download Zip🤐</button></div>
             

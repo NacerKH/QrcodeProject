@@ -19,4 +19,4 @@ Compile Javascript Assets npm run watch
 
 
 Notice : -when u use the package simple-qrcode u must install magick in your machine and enable php_imagick.dll In Xamp 
-        -zipController typo (faute de frappe) 
+        

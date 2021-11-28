@@ -1,3 +1,4 @@
+    **** get file from storage no from request
     // $fileName = time().'.'.$request->file->getClientOriginalExtension();
        // info($request->file->get());
         // $request->file->move(public_path('storage/listStr'), $fileName);
@@ -5,6 +6,7 @@
      
       // $file_url = 'public\storage\listStr\\'. $fileName;
       //  $current = file_get_contents(base_path($file_url));
+     **** injection de depandance 
   $generateService=config('services.gener.default');
       $this->app->bind(GenerateServiceInterface::class, GenerateService::class);
       $this->app->bind(ZipServiceInterface::class, ZipService::class);
